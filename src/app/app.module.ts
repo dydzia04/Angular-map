@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TopBarMapAndInfoComponent } from './top-bar-map-and-info/top-bar-map-and-info.component';
 import { MapContainerComponent } from './map-container/map-container.component';
 import { SideMapAdditionalDataComponent } from './side-map-additional-data/side-map-additional-data.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SideMapAdditionalDataComponent } from './side-map-additional-data/side-
     SideMapAdditionalDataComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
