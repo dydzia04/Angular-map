@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "DHI-recruitment-project"
+    }
+  },
+  "defaultProject": "DHI-recruitment-project",
+  "cli": {
+    "analytics": "5bb17275-3216-4194-a45f-0f44e1c2d9e6"
+  }
 }
