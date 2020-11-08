@@ -1,9 +1,12 @@
 <div class="container">
-  <ul class="list-of-areas">
-    <li></li>
+  <ul class="list-of-areas" #list>
+    <li *ngFor="let area of areasList">
+      <p>{{area.value}}</p>
+      <div class="area-square" [ngStyle]="{'background-color': area.color}"></div>
+    </li>
   </ul>
-  <div class="button-for-areas">
+  <div class="button-for-areas" (click)="toggleList(this)">
     <p>Legenda stref</p>
-    <fa-icon [icon]="faAngleUp"></fa-icon>
+    <fa-icon [icon]="faAngle"></fa-icon>
   </div>
 </div>
