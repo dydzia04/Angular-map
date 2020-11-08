@@ -8,6 +8,7 @@ import { SideMapAdditionalDataComponent } from './side-map-additional-data/side-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LegendAreasComponent } from './legend-areas/legend-areas.component';
 import { LegendFlowsComponent } from './legend-flows/legend-flows.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { LegendFlowsComponent } from './legend-flows/legend-flows.component';
   ],
   imports: [
     BrowserModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

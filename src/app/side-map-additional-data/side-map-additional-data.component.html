@@ -1,10 +1,62 @@
-<aside>
-  <div class="buttons-for-managing">
-    <fa-icon [icon]="faArrow"></fa-icon>
-    <fa-icon [icon]="faPlus"></fa-icon>
-    <fa-icon [icon]="faMinus"></fa-icon>
-  </div>
-  <div class="pin-data">
+<div class="overlay-container">
+  <div>
+    <div class="legends-wrapper">
+      <div class="legends">
+        <app-legend-areas></app-legend-areas>
+        <app-legend-flows></app-legend-flows>
+      </div>
+    </div>
 
+    <div class="map-hole"></div>
   </div>
-</aside>
+
+  <aside>
+    <div class="buttons-for-managing">
+      <div class="icons">
+        <fa-icon [icon]="faArrow"></fa-icon>
+        <fa-icon [icon]="faPlus"></fa-icon>
+        <fa-icon [icon]="faMinus"></fa-icon>
+      </div>
+      <div class="hide-button">
+        <div (click)="toggleSidebar()">
+          <fa-icon [icon]="faSquare"></fa-icon>
+        </div>
+      </div>
+    </div>
+    <div class="pin-data" #togglableSide  style="display: none">
+      <div class="pin-data-header">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+        <p>Przepływomierz</p>
+      </div>
+      <div class="pin-instruction">
+        <h4>Instrukcja</h4>
+        <p>Wypełnij dane i kliknij przycisk <span class="highlight-p">dodaj punkt</span>. Następnie wybierz punkt na
+          mapie
+          i kliknij <span class="highlight-p">zatwierdź</span>.</p>
+      </div>
+      <div>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="flow-form">
+          <h4>Dodaj nowy przepływomierz</h4>
+          <label class="form-name">
+            <span>Nazwa</span>
+            <input type="text" [formControl]="name">
+          </label>
+          <label class="form-type">
+            <span>Typ</span>
+            <select>
+              <option *ngFor="let type of flowTypes" [value]="type.value">{{type.name}}</option>
+            </select>
+          </label>
+          <label class="form-flow">
+            <span>Średnia wartość Przepływu [m3/dzień]</span>
+            <input type="number" [formControl]="flow">
+          </label>
+          <div class="form-buttons">
+            <button type="reset">Wyczyść</button>
+            <button type="submit">Zatwierdź</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </aside>
+</div>

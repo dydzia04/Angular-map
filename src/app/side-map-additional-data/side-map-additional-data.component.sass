@@ -1,10 +1,116 @@
 @import "src/assets/variables"
 
-aside
-  width: 100px
+.overlay-container
+  pointer-events: none
+  position: absolute
+  top: 0
+  right: 0
+  width: 100%
+  height: 100%
   display: grid
-  grid-template-columns: 1fr 7fr
+  grid-template-columns: auto fit-content(20%)
 
-fa-icon
-  color: $font-dark
-  font-size: 2em
+aside
+  pointer-events: all
+  height: 100%
+  background-color: $bg-grey
+  display: grid
+  grid-template-columns: auto auto
+  .buttons-for-managing
+    border-right: 3px solid $border
+  fa-icon
+    color: $font-dark
+    font-size: 2em
+  .icons
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 0.5em
+    border-bottom: 2px solid $font-dark
+    fa-icon
+      margin-bottom: 0.5em
+    fa-icon:last-child
+      margin-bottom: 0
+  .hide-button
+    padding: 0.5em
+    display: flex
+    justify-content: center
+    align-items: center
+
+.pin-data-header
+  padding: 1em
+  display: flex
+  justify-content: center
+  align-items: center
+  border-bottom: 1px solid $border
+  p
+    font-weight: $weight
+    color: $font-dark
+    margin-left: 0.5em
+
+.pin-instruction
+  padding: 1em
+  border-bottom: 1px solid $border
+  h4
+    margin: 0 0 1em 0
+  span
+    margin: 0
+    color: $font-light
+  .highlight-p
+    color: $font-link
+    font-weight: $weight
+
+.flow-form
+  padding: 1em
+  display: flex
+  flex-direction: column
+  h4
+    margin: 0 0 1em 0
+  .form-name, .form-type, .form-flow
+    display: flex
+    flex-direction: column
+    margin-bottom: 1em
+
+.form-buttons
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  button
+    outline: none
+    border-radius: 0.25em
+    padding: 0.5em 1em
+    font-weight: bold
+  button[type="reset"]
+    background: $bg-white
+    border: 2px solid $font-link
+    color: $font-link
+  button[type="submit"]
+    background: $font-link
+    color: $bg-white
+    border: none
+
+.form-name, .form-flow, .form-type
+  span
+    margin: 0.5em 0 0.25em 0
+    font-size: 0.75em
+    color: $font-light
+  input, select
+    outline: none
+    background: transparent
+    border: none
+    border-bottom: 2px solid $font-light
+  input:focus, select:focus
+    border: none
+    border-bottom: 2px solid $font-dark
+
+.legends-wrapper
+  display: flex
+  justify-content: flex-end
+  margin: 1em 2em 0 0
+
+.legends
+  pointer-events: all
+  display: grid
+  grid-template-columns: 16ch 32ch
+  grid-gap: 1em
