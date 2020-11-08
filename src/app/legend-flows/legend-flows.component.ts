@@ -12,8 +12,8 @@ export class LegendFlowsComponent implements OnInit {
   constructor() {
   }
 
-  faAngle = faAngleUp;
-  isShown = true;
+  faAngle = faAngleDown;
+  isShown = false;
   flowsList = [
     {text: 'Przepływ nieznany', icon: ''},
     {text: 'Przepływ - SUW/ZUW', icon: ''},

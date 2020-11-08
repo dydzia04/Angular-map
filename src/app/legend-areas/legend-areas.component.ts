@@ -12,8 +12,8 @@ export class LegendAreasComponent implements OnInit {
   constructor() {
   }
 
-  faAngle = faAngleUp;
-  isShown = true;
+  faAngle = faAngleDown;
+  isShown = false;
   areasList = [
     {color: '#DBE4E9', value: 'brak'},
     {color: '#4DFF4D', value: 0},

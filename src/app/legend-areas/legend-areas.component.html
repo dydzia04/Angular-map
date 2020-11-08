@@ -1,5 +1,5 @@
 <div class="container">
-  <ul class="list-of-areas" #list>
+  <ul class="list-of-areas" #list style="display: none">
     <li *ngFor="let area of areasList">
       <p>{{area.value}}</p>
       <div class="area-square" [ngStyle]="{'background-color': area.color}"></div>
