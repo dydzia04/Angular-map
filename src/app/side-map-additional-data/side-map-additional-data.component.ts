@@ -37,7 +37,7 @@ export class SideMapAdditionalDataComponent implements OnInit {
 
     if (!this.isVisible){
       this.faSquare = faMinusSquare;
-      this.side.nativeElement.style.display = 'grid';
+      this.side.nativeElement.style.display = 'block';
       this.isVisible = true;
       return;
     }
