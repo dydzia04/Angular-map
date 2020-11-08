@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-legend-flows',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LegendFlowsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('list') list;
+  constructor() {
+  }
 
+  faAngle = faAngleUp;
+  isShown = true;
   flowsList = [
     {text: 'Przepływ nieznany', icon: ''},
     {text: 'Przepływ - SUW/ZUW', icon: ''},
@@ -19,6 +24,23 @@ export class LegendFlowsComponent implements OnInit {
     {text: 'Sprzedaż - odczyt ręczny', icon: ''},
     {text: 'Przepływ wirtualny', icon: ''},
   ];
+
+  toggleList(elem): void {
+    console.log(this.list);
+    if (this.isShown) {
+      elem.faAngle = faAngleDown;
+      this.list.nativeElement.style.display = 'none';
+      this.isShown = false;
+      return;
+    }
+
+    if (!this.isShown) {
+      elem.faAngle = faAngleUp;
+      this.list.nativeElement.style.display = 'block';
+      this.isShown = true;
+      return;
+    }
+  }
 
   ngOnInit(): void {
   }

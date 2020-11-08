@@ -1,1 +1,12 @@
-<p>legend-flows works!</p>
+<div class="container">
+  <ul class="list-of-flows" #list>
+    <li *ngFor="let flow of flowsList">
+      <p>{{flow.text}}</p>
+      <div>{{flow.icon}}</div>
+    </li>
+  </ul>
+  <div class="button-for-flows" (click)="toggleList(this)">
+    <p>Legenda przepływu</p>
+    <fa-icon [icon]="faAngle"></fa-icon>
+  </div>
+</div>
