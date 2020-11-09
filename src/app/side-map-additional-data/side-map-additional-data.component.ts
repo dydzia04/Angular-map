@@ -21,8 +21,14 @@ export class SideMapAdditionalDataComponent implements OnInit {
   @ViewChild('togglableSide') side;
   // Define flow types to populate
   flowTypes = [
-    {name: 'Przepływ wirtualny', value: 'virtual'},
-    {name: 'Przepływ faktyczny', value: 'real'},
+    {text: 'Przepływ nieznany', icon: '', value: 'unknown'},
+    {text: 'Przepływ - SUW/ZUW', icon: '', value: 'SUW/ZUW'},
+    {text: 'Przepływ - zbiornik', icon: '', value: 'container'},
+    {text: 'Przepływ międzystrefowy', icon: '', value: 'between-areas'},
+    {text: 'Sprzedaż - Online', icon: '', value: 'online'},
+    {text: 'Sprzedaż - odczyt co 12h', icon: '', value: 'read-12h'},
+    {text: 'Sprzedaż - odczyt ręczny', icon: '', value: 'manual-read'},
+    {text: 'Przepływ wirtualny', icon: '', value: 'virtual'},
   ];
   // FontAwesome icons
   faArrow = faLocationArrow;
@@ -33,7 +39,9 @@ export class SideMapAdditionalDataComponent implements OnInit {
   isVisible = false;
   name = new FormControl('');
   flow = new FormControl('');
+  // Map things
   currentMarker: Marker;
+  map: any;
   constructor() {
   }
 
@@ -52,7 +60,6 @@ export class SideMapAdditionalDataComponent implements OnInit {
       return;
     }
   }
-
   onSubmit(): void {
     this.currentMarker.coordinates = this.mapCoords;
     this.currentMarker.id = '_' + Math.random().toString(36).substr(2, 9);

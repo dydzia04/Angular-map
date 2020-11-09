@@ -5,7 +5,10 @@ import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import MousePosition from 'ol/control/MousePosition';
 import {createStringXY} from 'ol/coordinate';
-// import {defaults as defaultControls} from 'ol/control';
+import {toLonLat} from 'ol/proj';
+import {toStringHDMS} from 'ol/coordinate';
+import Overlay from 'ol/Overlay';
+declare var $: any;
 
 @Component({
   selector: 'app-map-container',
@@ -14,16 +17,15 @@ import {createStringXY} from 'ol/coordinate';
 })
 export class MapContainerComponent implements OnInit {
   @Output() markerCoords: EventEmitter<any> = new EventEmitter();
+  // tslint:disable-next-line:variable-name
   private map: any;
   private mousePositionControl: any;
   private mapCoordPosition: any;
+  private popup: any;
+  private marker: any;
+  private vienna: any;
 
   constructor() {
-  }
-
-  getMapCoordPosition(event: any): void {
-    this.mapCoordPosition = this.map.getEventCoordinate(event);
-    this.markerCoords.emit(this.mapCoordPosition);
   }
 
   ngOnInit(): void {
@@ -47,6 +49,42 @@ export class MapContainerComponent implements OnInit {
       controls: [/*this.mousePositionControl*/],
       target: 'map'
     });
+    this.popup = new Overlay({
+      element: document.getElementById('popup'),
+    });
+    this.map.addOverlay(this.popup);
+    this.marker = new Overlay({
+      position: this.mapCoordPosition,
+      positioning: 'center-center',
+      element: document.getElementById('marker'),
+      stopEvent: false,
+    });
+    this.map.addOverlay(this.marker);
+    this.vienna = new Overlay({
+      position: this.mapCoordPosition,
+      element: document.getElementById('vienna'),
+    });
+    this.map.addOverlay(this.vienna);
   }
 
+  getMapCoordPosition(event: any): void {
+    this.mapCoordPosition = this.map.getEventCoordinate(event);
+    this.markerCoords.emit(this.mapCoordPosition);
+  }
+
+  setMarker(): void {
+    const element = this.popup.getElement();
+    const hdms = toStringHDMS(toLonLat(this.mapCoordPosition));
+
+    $(element).popover('dispose');
+    this.popup.setPosition(this.mapCoordPosition);
+    $(element).popover({
+      container: element,
+      placement: 'top',
+      animation: false,
+      html: true,
+      content: '<p>The location you clicked was:</p><code>' + hdms + '</code>',
+    });
+    $(element).popover('show');
+  }
 }

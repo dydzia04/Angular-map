@@ -23,6 +23,14 @@ export class LegendFlowsComponent implements OnInit {
     {text: 'Sprzedaż - odczyt co 12h', icon: ''},
     {text: 'Sprzedaż - odczyt ręczny', icon: ''},
     {text: 'Przepływ wirtualny', icon: ''},
+    {text: 'Przepływ nieznany', icon: ''},
+    {text: 'Przepływ - SUW/ZUW', icon: ''},
+    {text: 'Przepływ - zbiornik', icon: ''},
+    {text: 'Przepływ międzystrefowy', icon: ''},
+    {text: 'Sprzedaż - Online', icon: ''},
+    {text: 'Sprzedaż - odczyt co 12h', icon: ''},
+    {text: 'Sprzedaż - odczyt ręczny', icon: ''},
+    {text: 'Przepływ wirtualny', icon: ''},
   ];
 
   toggleList(elem): void {
