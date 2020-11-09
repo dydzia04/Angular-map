@@ -19,6 +19,7 @@ interface Marker
 export class SideMapAdditionalDataComponent implements OnInit {
   @Input() mapCoords: any;
   @ViewChild('togglableSide') side;
+  @ViewChild('legends') legends;
   // Define flow types to populate
   flowTypes = [
     {text: 'Przepływ nieznany', icon: '', value: 'unknown'},
@@ -47,6 +48,9 @@ export class SideMapAdditionalDataComponent implements OnInit {
 
   toggleSidebar(): void {
     if (this.isVisible){
+      if ( window.screen.width < 768 ){
+        this.legends.nativeElement.style.display = 'grid';
+      }
       this.faSquare = faPlusSquare;
       this.side.nativeElement.style.display = 'none';
       this.isVisible = false;
@@ -54,6 +58,9 @@ export class SideMapAdditionalDataComponent implements OnInit {
     }
 
     if (!this.isVisible){
+      if ( window.screen.width < 768 ){
+        this.legends.nativeElement.style.display = 'none';
+      }
       this.faSquare = faMinusSquare;
       this.side.nativeElement.style.display = 'block';
       this.isVisible = true;
