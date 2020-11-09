@@ -80,8 +80,6 @@ export class SideMapAdditionalDataComponent implements OnInit {
       coordinates: [0, 0],
       flow: 0
     };
-    console.log(localStorage);
-    console.log(this.currentMarker);
   }
 
   ngOnInit(): void {

@@ -5,8 +5,6 @@ import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import MousePosition from 'ol/control/MousePosition';
 import {createStringXY} from 'ol/coordinate';
-import {toLonLat} from 'ol/proj';
-import {toStringHDMS} from 'ol/coordinate';
 import Overlay from 'ol/Overlay';
 declare var $: any;
 
@@ -74,7 +72,6 @@ export class MapContainerComponent implements OnInit {
 
   setMarker(): void {
     const element = this.popup.getElement();
-    const hdms = toStringHDMS(toLonLat(this.mapCoordPosition));
 
     $(element).popover('dispose');
     this.popup.setPosition(this.mapCoordPosition);
@@ -83,7 +80,7 @@ export class MapContainerComponent implements OnInit {
       placement: 'top',
       animation: false,
       html: true,
-      content: '<p>The location you clicked was:</p><code>' + hdms + '</code>',
+      content: '',
     });
     $(element).popover('show');
   }
