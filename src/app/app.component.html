@@ -1,9 +1,7 @@
 <main>
-<!--  Map     -->
-<!--  Overlay -->
   <app-top-bar-map-and-info></app-top-bar-map-and-info>
   <article>
-    <app-map-container></app-map-container>
-    <app-side-map-additional-data></app-side-map-additional-data>
+    <app-map-container (markerCoords)="parentMapCoords=$event"></app-map-container>
+    <app-side-map-additional-data [mapCoords]="parentMapCoords"></app-side-map-additional-data>
   </article>
 </main>

@@ -35,21 +35,22 @@
           i kliknij <span class="highlight-p">zatwierdź</span>.</p>
       </div>
       <div>
-        <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="flow-form">
+        <form #form="ngForm" (ngSubmit)="onSubmit()" class="flow-form">
           <h4>Dodaj nowy przepływomierz</h4>
           <label class="form-name">
             <span>Nazwa</span>
-            <input type="text" [formControl]="name">
+            <input type="text" [formControl]="name" (change)="updateName($event)">
           </label>
           <label class="form-type">
             <span>Typ</span>
-            <select>
+            <select (change)="updateType($event)">
+              <option selected style="display: none">Wybierz</option>
               <option *ngFor="let type of flowTypes" [value]="type.value">{{type.name}}</option>
             </select>
           </label>
           <label class="form-flow">
             <span>Średnia wartość Przepływu [m3/dzień]</span>
-            <input type="number" [formControl]="flow">
+            <input type="number" [formControl]="flow" (change)="updateFlow($event)">
           </label>
           <div class="form-buttons">
             <button type="reset">Wyczyść</button>
